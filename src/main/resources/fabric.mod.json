@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "lumos",
+  "version": "${version}",
+  "name": "Lumos",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/lumos/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "dev.army.lumos.client.LumosDataGenerator"
+    ],
+    "client": [
+      "dev.army.lumos.client.LumosClient"
+    ]
+  },
+  "mixins": [
+    "lumos.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
