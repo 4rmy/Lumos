@@ -1,8 +1,5 @@
 package dev.army.lumos.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @SuppressWarnings("unused")
 public class LumosConfig {
     public General general = new General();

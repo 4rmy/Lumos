@@ -2,6 +2,7 @@ package dev.army.lumos.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dev.army.lumos.util.LumosLogger;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Files;
@@ -31,8 +32,10 @@ public class ConfigManager {
             }
 
         } catch (Exception e) {
-            System.err.println("[Lumos] Failed to load config, using defaults");
+            LumosLogger.error("[Lumos] Failed to load config, using defaults");
             config = new LumosConfig();
+        } finally {
+            save();
         }
     }
 
@@ -45,7 +48,7 @@ public class ConfigManager {
             Files.createDirectories(PATH.getParent());
             Files.writeString(PATH, GSON.toJson(config));
         } catch (Exception e) {
-            System.err.println("[Lumos] Failed to save config");
+            LumosLogger.error("[Lumos] Failed to save config");
         }
     }
 
