@@ -1,0 +1,25 @@
+package dev.army.lumos.util;
+
+public class Color4 {
+    public static Color4 WHITE = Color4.from(0xFFFFFFFF);
+    public int r, g, b, a;
+
+    public Color4(int a, int r, int g, int b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = a;
+    }
+
+    public static Color4 from(int argb) {
+        return new Color4((argb >> 24) & 0xFF, (argb >> 16) & 0xFF, (argb >> 8) & 0xFF, argb & 0xFF);
+    }
+
+    public int toRGBA() {
+        return (this.r << 24) | (this.g << 16) | (this.b << 8) | this.a;
+    }
+
+    public int toARGB() {
+        return (this.a << 24) | (this.r << 16) | (this.g << 8) | this.b;
+    }
+}

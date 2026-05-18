@@ -5,7 +5,6 @@ import com.mojang.brigadier.context.CommandContext;
 import dev.army.lumos.config.ConfigManager;
 import dev.army.lumos.config.clickui.ClickUiScreen;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.Click;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;

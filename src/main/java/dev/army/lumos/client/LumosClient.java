@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.fabricmc.fabric.impl.client.rendering.hud.HudLayer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Contract;
 
@@ -37,7 +36,6 @@ public class LumosClient implements ClientModInitializer {
         return LumosClient.ModVersion;
     }
 
-
     @Override
     public void onInitializeClient() {
         // Client setup
@@ -45,10 +43,7 @@ public class LumosClient implements ClientModInitializer {
         ClientLifecycleEvents.CLIENT_STOPPING.register(minecraftClient -> ConfigManager.save()); // save config when you quit
 
         // Command Setup
-        CommandRegistrationCallback.EVENT.register((
-                dispatcher,
-                registryAccess,
-                environment) -> LumosCommands.register(dispatcher));
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> LumosCommands.register(dispatcher));
 
         // Hud Setup
         HudElementRegistry.attachElementBefore(VanillaHudElements.CHAT, Identifier.of(LumosClient.getModId(), "before_chat"), HudRenderer::render);
