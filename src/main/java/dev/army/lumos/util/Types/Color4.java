@@ -1,7 +1,9 @@
-package dev.army.lumos.util.ConfigTypes;
+package dev.army.lumos.util.Types;
 
 public class Color4 {
     public static Color4 WHITE = Color4.from(0xFFFFFFFF);
+    public static Color4 BLACK = Color4.from(0xFF000000);
+
     public int r, g, b, a;
 
     public Color4(int a, int r, int g, int b) {

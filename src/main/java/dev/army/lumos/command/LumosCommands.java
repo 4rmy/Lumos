@@ -23,20 +23,19 @@ public class LumosCommands {
     private static int reload(CommandContext<ServerCommandSource> ctx) {
         ConfigManager.load();
         ctx.getSource().sendFeedback(() -> Text.literal("Lumos config reloaded.").withColor(// argb
-                ConfigManager.get().general.clickUI.primary.toARGB()), false);
+                0xFFFF00FF), false);
         return 1;
     }
 
     private static int config(CommandContext<ServerCommandSource> ctx) {
         ctx.getSource().sendFeedback(() -> Text.literal("Manage the lumos config.").withColor(// argb
-                ConfigManager.get().general.clickUI.primary.toARGB()), false);
+                0xFFFF00FF), false);
         return 1;
     }
 
     // commands
     private static int root(CommandContext<ServerCommandSource> ctx) {
         MinecraftClient client = MinecraftClient.getInstance();
-        ConfigManager.get().general.clickUI.enabled = true;
         client.execute(() -> client.setScreen(ClickUiScreen.Instance));
         return 1;
     }

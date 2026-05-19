@@ -1,5 +1,6 @@
 package dev.army.lumos.ui;
 
+import dev.army.lumos.ui.clickui.ClickUI;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
@@ -13,7 +14,7 @@ public class ClickUiScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
-
+        ClickUI.Instance.render(context, mouseX, mouseY, deltaTicks);
     }
 
     @Override
