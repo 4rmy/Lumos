@@ -1,4 +1,4 @@
-package dev.army.lumos.util;
+package dev.army.lumos.util.ConfigTypes;
 
 public class Color4 {
     public static Color4 WHITE = Color4.from(0xFFFFFFFF);
