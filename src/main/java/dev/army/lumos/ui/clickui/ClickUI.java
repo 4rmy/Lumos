@@ -9,7 +9,7 @@ public class ClickUI {
     }
 
     public void render(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
-
         // draw search bar
+
     }
 }
