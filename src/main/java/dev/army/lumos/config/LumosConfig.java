@@ -4,17 +4,25 @@ import dev.army.lumos.util.Color4;
 
 @SuppressWarnings("unused")
 public class LumosConfig {
-    public General general = new General();
+    public general General = new general();
+    public mining Mining = new mining();
 
-    public static class General {
-        public boolean enabled = false;
-        public Color4 primary = Color4.from(0xCC917293);
-        public Color4 secondary = Color4.from(0xFFF9F8F9);
-        public Color4 disabled = Color4.from(0xCCF9F8F9);
+    public static class general {
+        public static class clickui extends OptionBase {
+            public Color4 primary = Color4.from(0xCC7f00ff);
+            public Color4 secondary = Color4.from(0xFF5000d0);
+            public Color4 disabled = Color4.from(0xCC200040);
+        }
+        public clickui ClickUI = new clickui();
     }
 
-    public Testing testing = new Testing();
-    public static class Testing {
+    public static class mining {
+        public static class commissiontracker extends OptionBase {
+        }
+        public commissiontracker CommissionTracker = new commissiontracker();
+    }
+
+    public static class OptionBase {
         public boolean enabled = false;
     }
 }

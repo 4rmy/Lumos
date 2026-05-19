@@ -48,7 +48,7 @@ public class ConfigManager {
             Files.createDirectories(PATH.getParent());
             Files.writeString(PATH, GSON.toJson(config));
         } catch (Exception e) {
-            LumosLogger.error("[Lumos] Failed to save config");
+            LumosLogger.error("[Lumos] Failed to save config\n"+e.getMessage());
         }
     }
 

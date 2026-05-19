@@ -3,7 +3,7 @@ package dev.army.lumos.command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import dev.army.lumos.config.ConfigManager;
-import dev.army.lumos.config.clickui.ClickUiScreen;
+import dev.army.lumos.ui.ClickUiScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
@@ -23,19 +23,20 @@ public class LumosCommands {
     private static int reload(CommandContext<ServerCommandSource> ctx) {
         ConfigManager.load();
         ctx.getSource().sendFeedback(() -> Text.literal("Lumos config reloaded.").withColor(// argb
-                ConfigManager.get().general.primary.toARGB()), false);
+                ConfigManager.get().General.ClickUI.primary.toARGB()), false);
         return 1;
     }
 
     private static int config(CommandContext<ServerCommandSource> ctx) {
         ctx.getSource().sendFeedback(() -> Text.literal("Manage the lumos config.").withColor(// argb
-                ConfigManager.get().general.primary.toARGB()), false);
+                ConfigManager.get().General.ClickUI.primary.toARGB()), false);
         return 1;
     }
 
     // commands
     private static int root(CommandContext<ServerCommandSource> ctx) {
         MinecraftClient client = MinecraftClient.getInstance();
+        ConfigManager.get().General.ClickUI.enabled = true;
         client.execute(() -> client.setScreen(ClickUiScreen.Instance));
         return 1;
     }
