@@ -34,7 +34,7 @@ public class PanelWidgit extends Widgit {
 
     @Override
     int getHeight() {
-        int height = Widgit.minHeight + 8;
+        int height = Widgit.minHeight;
         for (ModuleWidgit m : mods) {
             height += m.getHeight();
         }
@@ -54,10 +54,6 @@ public class PanelWidgit extends Widgit {
         for (ModuleWidgit m : mods) {
             m.render(ctx, mouseX, mouseY, deltaTicks);
         }
-
-        // bottom
-        ctx.fillRounded(this.x, this.y + this.getHeight() - 8, this.x + Widgit.width, this.y + this.getHeight(), 0xFF151515, 4);
-        ctx.fill(this.x, this.y + this.getHeight() - 8, this.x + Widgit.width, this.y + this.getHeight() - 4, 0xFF151515);
     }
 
     @Override

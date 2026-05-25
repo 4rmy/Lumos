@@ -54,6 +54,15 @@ public class LumosConfig extends LumosReflector {
     }
 
     public static class mining extends LumosReflector {
+        public final commission_display Commission_Display = new commission_display();
+        // modules
+        public static class commission_display extends ModuleBase {
+            public Color4 zero_percent = Color4.from(0xffff4444);
+            public Color4 twenty_percent = Color4.from(0xffff7944);
+            public Color4 sixty_percent = Color4.from(0xffffBA44);
+            public Color4 less_then_done = Color4.from(0xff44cdff);
+            public Color4 done = Color4.from(0xff44ff69);
+        }
     }
 
     public static class farming extends LumosReflector {

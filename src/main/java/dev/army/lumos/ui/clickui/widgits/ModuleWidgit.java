@@ -49,13 +49,7 @@ public class ModuleWidgit extends Widgit {
     @Override
     public void mouseClicked(Click click, boolean doubled) {
         if (LumosMath.inBounds((int) click.x(), (int) click.y(), this.x, this.y, this.x + Widgit.width, this.y + Widgit.minHeight)) {
-            if (click.button() == 0) {
-                try {
-                    ((ModuleBase) LumosReflector.fromPath(ConfigManager.get(), this.path).value()).toggle();
-                } catch (ClassCastException e) {
-                    // .....
-                }
-            } else if (click.button() == 1) {
+            if (click.button() == 1) {
                 this.expanded = !this.expanded;
                 this.parent.update();
             }
