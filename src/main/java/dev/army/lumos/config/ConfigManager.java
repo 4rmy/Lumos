@@ -17,7 +17,7 @@ public class ConfigManager {
     private static final Path CONFIG_PATH = Path.of("config/lumos/config.json");
 
     public static void save() {
-
+        System.out.println(ModuleManager.getModules().size());
         try {
 
             Files.createDirectories(CONFIG_PATH.getParent());

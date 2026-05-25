@@ -12,6 +12,7 @@ public abstract class ModuleBase {
     private final BooleanSetting enabled = new BooleanSetting("enabled", false);
 
     public ModuleBase() {
+        settings.add(enabled);
         for (Field field : getClass().getDeclaredFields()) {
             field.setAccessible(true);
 

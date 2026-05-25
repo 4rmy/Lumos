@@ -16,8 +16,6 @@ public class ConfigSerializer {
         JsonObject object = new JsonObject();
         JsonObject settingsObject = new JsonObject();
 
-        object.addProperty("enabled", module.isEnabled());
-
         for (Object obj : module.getSettings()) {
 
             if (!(obj instanceof SettingValue<?> setting)) continue;
