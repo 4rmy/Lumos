@@ -2,6 +2,7 @@ package dev.army.lumos.client;
 
 import dev.army.lumos.command.LumosCommands;
 import dev.army.lumos.hud.HudRenderer;
+import dev.army.lumos.modules.ModuleLoader;
 import dev.army.lumos.util.LumosLogger;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
@@ -37,8 +38,7 @@ public class LumosClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         // Client setup
-        //ConfigManager.load(); // load current config
-        //ClientLifecycleEvents.CLIENT_STOPPING.register(minecraftClient -> ConfigManager.save()); // save config when you quit
+        ModuleLoader.loadModules();
 
         // Command Setup
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> LumosCommands.register(dispatcher));

@@ -2,10 +2,10 @@ package dev.army.lumos.modules.mods.General;
 
 import dev.army.lumos.modules.Category;
 import dev.army.lumos.modules.Module;
+import dev.army.lumos.modules.ModuleBase;
+import dev.army.lumos.modules.Setting;
 
-@Module(
-        name = "Snap-Tap",
-        category = Category.General
-)
-public class SnapTap {
+@Module(name = "Snap-Tap", category = Category.General)
+public class SnapTap extends ModuleBase {
+    @Setting public boolean enable = false;
 }

@@ -6,9 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface Module {
-    String name();
-    Category category();
-    boolean hide_enabled() default false;
+@Target(ElementType.FIELD)
+public @interface Setting {
 }
