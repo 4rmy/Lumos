@@ -1,5 +1,7 @@
 package dev.army.lumos.modules.settings;
 
+import dev.army.lumos.config.ConfigManager;
+
 public class SettingValue<T> {
     private final String name;
     private T value;

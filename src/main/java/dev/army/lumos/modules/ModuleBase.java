@@ -1,5 +1,6 @@
 package dev.army.lumos.modules;
 
+import dev.army.lumos.modules.settings.BooleanSetting;
 import dev.army.lumos.modules.settings.SettingValue;
 
 import java.lang.reflect.Field;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public abstract class ModuleBase {
     private final List<Object> settings = new ArrayList<>();
-    private boolean enabled = false;
+    private final BooleanSetting enabled = new BooleanSetting("enabled", false);
 
     public ModuleBase() {
         for (Field field : getClass().getDeclaredFields()) {
@@ -26,13 +27,13 @@ public abstract class ModuleBase {
     }
 
     public boolean isEnabled() {
-        return enabled;
+        return enabled.get();
     }
 
     public void setEnabled(boolean enabled) {
-        if (this.enabled == enabled) return;
+        if (this.enabled.get() == enabled) return;
 
-        this.enabled = enabled;
+        this.enabled.set(enabled);
 
         if (enabled) {
             onEnable();
@@ -42,7 +43,7 @@ public abstract class ModuleBase {
     }
 
     public void toggle() {
-        setEnabled(!enabled);
+        enabled.toggle();
     }
 
     protected void onEnable() {
