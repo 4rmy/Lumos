@@ -1,7 +1,6 @@
 package dev.army.lumos.ui;
 
 import dev.army.lumos.client.LumosClient;
-import dev.army.lumos.config.ConfigManager;
 import dev.army.lumos.ui.clickui.ClickUI;
 import dev.army.lumos.ui.clickui.render.LumosDrawContext;
 import net.minecraft.client.gui.Click;
@@ -18,7 +17,7 @@ public class ClickUiScreen extends Screen {
 
     @Override
     public void close() {
-        ConfigManager.save();
+        //ConfigManager.save();
         super.close();
     }
 

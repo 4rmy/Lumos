@@ -1,11 +1,9 @@
 package dev.army.lumos.client;
 
 import dev.army.lumos.command.LumosCommands;
-import dev.army.lumos.config.ConfigManager;
 import dev.army.lumos.hud.HudRenderer;
 import dev.army.lumos.util.LumosLogger;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -39,8 +37,8 @@ public class LumosClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         // Client setup
-        ConfigManager.load(); // load current config
-        ClientLifecycleEvents.CLIENT_STOPPING.register(minecraftClient -> ConfigManager.save()); // save config when you quit
+        //ConfigManager.load(); // load current config
+        //ClientLifecycleEvents.CLIENT_STOPPING.register(minecraftClient -> ConfigManager.save()); // save config when you quit
 
         // Command Setup
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> LumosCommands.register(dispatcher));

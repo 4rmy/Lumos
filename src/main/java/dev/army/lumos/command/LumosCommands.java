@@ -2,7 +2,6 @@ package dev.army.lumos.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import dev.army.lumos.config.ConfigManager;
 import dev.army.lumos.ui.ClickUiScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.CommandManager;
@@ -15,13 +14,13 @@ public class LumosCommands {
     }
 
     private static int reset(CommandContext<ServerCommandSource> ctx) {
-        ConfigManager.reset();
+        //ConfigManager.reset();
         ctx.getSource().sendFeedback(() -> Text.literal("Lumos config reset.").withColor(0xFFFF4242), false);
         return 1;
     }
 
     private static int reload(CommandContext<ServerCommandSource> ctx) {
-        ConfigManager.load();
+        //ConfigManager.load();
         ctx.getSource().sendFeedback(() -> Text.literal("Lumos config reloaded.").withColor(// argb
                 0xFFFF00FF), false);
         return 1;
