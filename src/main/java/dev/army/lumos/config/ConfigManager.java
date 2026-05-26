@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dev.army.lumos.client.LumosClient;
 import dev.army.lumos.modules.ModuleBase;
 import dev.army.lumos.modules.ModuleManager;
+import dev.army.lumos.util.LumosLogger;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,13 +19,13 @@ public class ConfigManager {
     private static final Path CONFIG_PATH = Path.of("config/lumos/config.json");
 
     public static void save() {
-        System.out.println(ModuleManager.getModules().size());
         try {
-
             Files.createDirectories(CONFIG_PATH.getParent());
 
             JsonObject root = new JsonObject();
             JsonObject modulesObject = new JsonObject();
+
+            root.addProperty("version", LumosClient.getModVersion());
 
             for (ModuleBase module : ModuleManager.getModules()) {
 
@@ -37,14 +39,12 @@ public class ConfigManager {
             Files.writeString(CONFIG_PATH, GSON.toJson(root));
 
         } catch (Exception e) {
-            e.printStackTrace();
+            LumosLogger.error("Failed to save config!", e);
         }
     }
 
     public static void load() {
-
         try {
-
             if (!Files.exists(CONFIG_PATH)) {
                 save();
                 return;
@@ -68,7 +68,7 @@ public class ConfigManager {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            LumosLogger.error("Failed to read config, using defaults!", e);
         }
     }
 }

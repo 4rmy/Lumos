@@ -30,7 +30,7 @@ public class LumosCommands {
     // commands
     private static int root(CommandContext<ServerCommandSource> ctx) {
         MinecraftClient client = MinecraftClient.getInstance();
-        client.execute(() -> client.setScreen(ClickUiScreen.Instance));
+        client.execute(() -> client.setScreen(ClickUiScreen.INSTANCE));
         return 1;
     }
 }

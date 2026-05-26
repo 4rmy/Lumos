@@ -4,7 +4,7 @@ import dev.army.lumos.ui.clickui.render.LumosDrawContext;
 import net.minecraft.client.gui.Click;
 
 public class ClickUI {
-    public static ClickUI Instance = null;
+    public static ClickUI INSTANCE = null;
 
     public ClickUI() {
     }

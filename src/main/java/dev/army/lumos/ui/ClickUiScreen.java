@@ -10,7 +10,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
 public class ClickUiScreen extends Screen {
-    public static final ClickUiScreen Instance = new ClickUiScreen();
+    public static final ClickUiScreen INSTANCE = new ClickUiScreen();
 
     public ClickUiScreen() {
         super(Text.literal(LumosClient.getModName() + " ClickUI"));
@@ -24,11 +24,7 @@ public class ClickUiScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
-        if (ClickUI.Instance == null) {
-            ClickUI.Instance = new ClickUI();
-        }
-
-        ClickUI.Instance.render(new LumosDrawContext(context, mouseX, mouseY), mouseX, mouseY, deltaTicks);
+        ClickUI.INSTANCE.render(new LumosDrawContext(context, mouseX, mouseY), mouseX, mouseY, deltaTicks);
     }
 
     @Override
@@ -40,6 +36,6 @@ public class ClickUiScreen extends Screen {
 
     @Override
     public boolean mouseClicked(Click click, boolean doubled) {
-        return ClickUI.Instance.mouseClicked(click, doubled);
+        return ClickUI.INSTANCE.mouseClicked(click, doubled);
     }
 }

@@ -11,13 +11,15 @@ public class ModuleManager {
     }
 
     public static List<ModuleBase> getModules() {
-        return modules;
+        return List.copyOf(modules);
     }
 
     public static List<ModuleBase> getByCategory(Category category) {
-        return modules.stream().filter(m -> {
-            Module annotation = m.getClass().getAnnotation(Module.class);
-            return annotation.category() == category;
-        }).toList();
+        return modules.stream().filter(m -> m.getMetadata().category() == category).toList();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T extends ModuleBase> T get(Class<T> clazz) {
+        return (T) modules.stream().filter(m -> m.getClass() == clazz).findFirst().orElse(null);
     }
 }

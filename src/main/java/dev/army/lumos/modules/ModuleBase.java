@@ -1,50 +1,52 @@
 package dev.army.lumos.modules;
 
-import dev.army.lumos.modules.settings.BooleanSetting;
 import dev.army.lumos.modules.settings.SettingValue;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ModuleBase {
-    private final List<Object> settings = new ArrayList<>();
-    private final BooleanSetting enabled = new BooleanSetting("enabled", false);
+    private final List<SettingValue<?>> settings = new ArrayList<>();
+    private final Module metadata;
+    private boolean enabled = false;
 
     public ModuleBase() {
-        settings.add(enabled);
-        for (Field field : getClass().getDeclaredFields()) {
-            field.setAccessible(true);
+        metadata = getClass().getAnnotation(Module.class);
+        ModuleManager.register(this);
+    }
 
-            try {
-                Object value = field.get(this);
+    public Module getMetadata() {
+        return metadata;
+    }
 
-                if (value instanceof SettingValue) {
-                    settings.add(value);
-                }
-            } catch (Exception ignored) {
+    protected <T extends SettingValue<?>> T register(T setting) {
+        settings.add(setting);
+        return setting;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled, boolean callEvents) {
+        if (this.enabled == enabled) return;
+
+        this.enabled = enabled;
+        if (callEvents) {
+            if (enabled) {
+                onEnable();
+            } else {
+                onDisable();
             }
         }
     }
 
-    public boolean isEnabled() {
-        return enabled.get();
-    }
-
     public void setEnabled(boolean enabled) {
-        if (this.enabled.get() == enabled) return;
-
-        this.enabled.set(enabled);
-
-        if (enabled) {
-            onEnable();
-        } else {
-            onDisable();
-        }
+        setEnabled(enabled, true);
     }
 
     public void toggle() {
-        enabled.toggle();
+        setEnabled(!enabled);
     }
 
     protected void onEnable() {
@@ -53,7 +55,7 @@ public abstract class ModuleBase {
     protected void onDisable() {
     }
 
-    public List<Object> getSettings() {
+    public List<SettingValue<?>> getSettings() {
         return settings;
     }
 }

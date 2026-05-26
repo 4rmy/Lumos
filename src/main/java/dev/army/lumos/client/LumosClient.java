@@ -3,7 +3,7 @@ package dev.army.lumos.client;
 import dev.army.lumos.command.LumosCommands;
 import dev.army.lumos.config.ConfigManager;
 import dev.army.lumos.hud.HudRenderer;
-import dev.army.lumos.modules.ModuleLoader;
+import dev.army.lumos.ui.clickui.ClickUI;
 import dev.army.lumos.util.LumosLogger;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
@@ -15,32 +15,31 @@ import org.jetbrains.annotations.Contract;
 
 public class LumosClient implements ClientModInitializer {
     // Mod Constants
-    private static final String ModName = "Lumos";
-    private static final String ModId = "lumos";
-    private static final String ModVersion = "1.0.0";
+    private static final String MOD_NAME = "Lumos";
+    private static final String MOD_ID = "lumos";
+    private static final String MOD_VERSION = "1.0.0";
 
     @Contract(pure = true)
     @SuppressWarnings("unused")
     public static String getModName() {
-        return LumosClient.ModName;
+        return LumosClient.MOD_NAME;
     }
 
     @Contract(pure = true)
     @SuppressWarnings("unused")
     public static String getModId() {
-        return LumosClient.ModId;
+        return LumosClient.MOD_ID;
     }
 
     @Contract(pure = true)
     @SuppressWarnings("unused")
     public static String getModVersion() {
-        return LumosClient.ModVersion;
+        return LumosClient.MOD_VERSION;
     }
 
     @Override
     public void onInitializeClient() {
         // Client setup
-        ModuleLoader.loadModules();
         ConfigManager.load();
         ClientLifecycleEvents.CLIENT_STOPPING.register((listener) -> {
             ConfigManager.save();
@@ -51,6 +50,9 @@ public class LumosClient implements ClientModInitializer {
 
         // Hud Setup
         HudElementRegistry.attachElementBefore(VanillaHudElements.CHAT, Identifier.of(LumosClient.getModId(), "before_chat"), HudRenderer::render);
+
+        // GUI Setup
+        ClickUI.INSTANCE = new ClickUI();
 
         LumosLogger.info("Mod Initialized.");
     }

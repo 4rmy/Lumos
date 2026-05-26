@@ -3,8 +3,9 @@ package dev.army.lumos.modules.settings;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 
-public class BooleanSetting extends SettingValue<Boolean> {
-    public BooleanSetting(String name, Boolean defaultValue) {
+public class KeybindSetting extends SettingValue<Integer> {
+
+    public KeybindSetting(String name, int defaultValue) {
         super(name, defaultValue);
     }
 
@@ -15,10 +16,6 @@ public class BooleanSetting extends SettingValue<Boolean> {
 
     @Override
     public void deserialize(JsonElement element) {
-        set(element.getAsBoolean());
-    }
-
-    public void toggle() {
-        set(!get());
+        set(element.getAsInt());
     }
 }
