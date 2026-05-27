@@ -3,7 +3,8 @@ package dev.army.lumos.client;
 import dev.army.lumos.command.LumosCommands;
 import dev.army.lumos.config.ConfigManager;
 import dev.army.lumos.hud.HudRenderer;
-import dev.army.lumos.ui.clickui.ClickUI;
+import dev.army.lumos.modules.ModuleManager;
+import dev.army.lumos.ui.ClickUiScreen;
 import dev.army.lumos.util.LumosLogger;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
@@ -39,6 +40,9 @@ public class LumosClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // registers Modules
+        ModuleManager.load();
+
         // Client setup
         ConfigManager.load();
         ClientLifecycleEvents.CLIENT_STOPPING.register((listener) -> {
@@ -52,7 +56,7 @@ public class LumosClient implements ClientModInitializer {
         HudElementRegistry.attachElementBefore(VanillaHudElements.CHAT, Identifier.of(LumosClient.getModId(), "before_chat"), HudRenderer::render);
 
         // GUI Setup
-        ClickUI.INSTANCE = new ClickUI();
+        ClickUiScreen.INSTANCE = new ClickUiScreen();
 
         LumosLogger.info("Mod Initialized.");
     }

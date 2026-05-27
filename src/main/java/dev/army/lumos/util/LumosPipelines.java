@@ -8,6 +8,16 @@ import net.minecraft.client.render.VertexFormats;
 import net.minecraft.util.Identifier;
 
 public class LumosPipelines {
+    public static final RenderPipeline GUI_TRIANGLES = RenderPipelines.register(RenderPipeline.builder(RenderPipelines.GUI_SNIPPET)
+            .withLocation(Identifier.of(LumosClient.getModId(), "pipeline/gui_triangles"))
+            .withUsePipelineDrawModeForGui(true)
+            .withVertexFormat(
+                    VertexFormats.POSITION_COLOR,
+                    VertexFormat.DrawMode.TRIANGLES
+            )
+            .build()
+    );
+
     public static final RenderPipeline GUI_STRIP = RenderPipelines.register(RenderPipeline.builder(RenderPipelines.GUI_SNIPPET)
             .withLocation(Identifier.of(LumosClient.getModId(), "pipeline/gui_strip"))
             .withUsePipelineDrawModeForGui(true)
@@ -17,5 +27,4 @@ public class LumosPipelines {
             )
             .build()
     );
-
 }
