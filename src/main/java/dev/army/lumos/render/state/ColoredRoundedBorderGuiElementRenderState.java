@@ -47,29 +47,29 @@ public record ColoredRoundedBorderGuiElementRenderState(RenderPipeline pipeline,
             emitCorner(vertices, x0 + outerRadius, y0 + outerRadius, outerRadius, inner_radius, 180f, 270f, segments);
         } else {
             vertices.vertex(pose(), x0, y0).color(col2);
-            vertices.vertex(pose(), x0+borderWidth, y0+borderWidth).color(col1);
+            vertices.vertex(pose(), x0 + borderWidth, y0 + borderWidth).color(col1);
         }
         if (roundedCorners.contains(RoundedCorner.TOP_RIGHT)) {
             emitCorner(vertices, x1 - outerRadius, y0 + outerRadius, outerRadius, inner_radius, 270f, 360f, segments);
         } else {
             vertices.vertex(pose(), x1, y0).color(col2);
-            vertices.vertex(pose(), x1-borderWidth, y0+borderWidth).color(col1);
+            vertices.vertex(pose(), x1 - borderWidth, y0 + borderWidth).color(col1);
         }
         if (roundedCorners.contains(RoundedCorner.BOTTOM_RIGHT)) {
             emitCorner(vertices, x1 - outerRadius, y1 - outerRadius, outerRadius, inner_radius, 0f, 90f, segments);
         } else {
             vertices.vertex(pose(), x1, y1).color(col2);
-            vertices.vertex(pose(), x1-borderWidth, y1-borderWidth).color(col1);
+            vertices.vertex(pose(), x1 - borderWidth, y1 - borderWidth).color(col1);
         }
         if (roundedCorners.contains(RoundedCorner.BOTTOM_LEFT)) {
             emitCorner(vertices, x0 + outerRadius, y1 - outerRadius, outerRadius, inner_radius, 90f, 180f, segments);
         } else {
             vertices.vertex(pose(), x0, y1).color(col2);
-            vertices.vertex(pose(), x0+borderWidth, y1-borderWidth).color(col1);
+            vertices.vertex(pose(), x0 + borderWidth, y1 - borderWidth).color(col1);
         }
 
-        vertices.vertex(pose(), x0, y0+outerRadius).color(col2);
-        vertices.vertex(pose(), x0+borderWidth, y0+outerRadius).color(col1);
+        vertices.vertex(pose(), x0, y0 + outerRadius).color(col2);
+        vertices.vertex(pose(), x0 + borderWidth, y0 + outerRadius).color(col1);
     }
 
     private void emitCorner(VertexConsumer vertices, float cx, float cy, float outer_radius, float inner_radius, float startDeg, float endDeg, int segments) {

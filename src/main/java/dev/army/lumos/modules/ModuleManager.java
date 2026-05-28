@@ -1,6 +1,6 @@
 package dev.army.lumos.modules;
 
-import dev.army.lumos.client.LumosClient;
+import dev.army.lumos.modules.mods.Misc.Another;
 import dev.army.lumos.modules.mods.Misc.Testing;
 import dev.army.lumos.util.LumosLogger;
 
@@ -28,7 +28,9 @@ public class ModuleManager {
         return (T) modules.stream().filter(m -> m.getClass() == clazz).findFirst().orElse(null);
     }
 
+    @SuppressWarnings("unused")
     public static void load() {
         Testing testing = new Testing();
+        Another another = new Another();
     }
 }

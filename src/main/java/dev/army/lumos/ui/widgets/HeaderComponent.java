@@ -4,7 +4,6 @@ import dev.army.lumos.client.LumosClient;
 import dev.army.lumos.render.LumosDrawContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.Click;
 import net.minecraft.text.Style;
 import net.minecraft.text.StyleSpriteSource;
 import net.minecraft.text.Text;
@@ -25,7 +24,7 @@ public class HeaderComponent extends Component {
         ctx.drawText(
                 tr,
                 header,
-                x + width/2 - tr.getWidth(header) / 2,
+                x + width / 2 - tr.getWidth(header) / 2,
                 y + padding,
                 0xFFFFFFFF,
                 false

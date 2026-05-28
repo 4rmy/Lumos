@@ -9,15 +9,12 @@ public abstract class Component {
     protected final int default_width = 80;
     protected final int default_radius = 2;
 
-    protected final int spacing = 2;
     protected final int padding = 2;
-
+    protected final int base_height = 14;
     protected int x;
     protected int y;
-    protected int width;
+    protected int width = default_width;
     protected int height = 14;
-    protected final int base_height = 14;
-
     protected Component parent;
 
     public abstract void render(LumosDrawContext ctx);

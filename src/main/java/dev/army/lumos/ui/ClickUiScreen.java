@@ -92,10 +92,10 @@ public class ClickUiScreen extends Screen {
         ctx.drawText(tr, line12, ctx.getScaledWindowWidth() - 148 + tr.getWidth(line11), 22, 0xFFFFFFFF, false);
         ctx.drawText(tr, line21, ctx.getScaledWindowWidth() - 148, 22 + tr.fontHeight, 0xFFFFFF00, false);
         ctx.drawText(tr, line22, ctx.getScaledWindowWidth() - 148 + tr.getWidth(line21), 22 + tr.fontHeight, 0xFFFFFFFF, false);
-        ctx.drawText(tr, line31, ctx.getScaledWindowWidth() - 148, 22 + tr.fontHeight*2, 0xFFFFFF00, false);
-        ctx.drawText(tr, line32, ctx.getScaledWindowWidth() - 148 + tr.getWidth(line31), 22 + tr.fontHeight*2, 0xFFFFFFFF, false);
-        ctx.drawText(tr, line41, ctx.getScaledWindowWidth() - 148, 22 + tr.fontHeight*3, 0xFFFFFF00, false);
-        ctx.drawText(tr, line42, ctx.getScaledWindowWidth() - 148 + tr.getWidth(line41), 22 + tr.fontHeight*3, 0xFFFFFFFF, false);
+        ctx.drawText(tr, line31, ctx.getScaledWindowWidth() - 148, 22 + tr.fontHeight * 2, 0xFFFFFF00, false);
+        ctx.drawText(tr, line32, ctx.getScaledWindowWidth() - 148 + tr.getWidth(line31), 22 + tr.fontHeight * 2, 0xFFFFFFFF, false);
+        ctx.drawText(tr, line41, ctx.getScaledWindowWidth() - 148, 22 + tr.fontHeight * 3, 0xFFFFFF00, false);
+        ctx.drawText(tr, line42, ctx.getScaledWindowWidth() - 148 + tr.getWidth(line41), 22 + tr.fontHeight * 3, 0xFFFFFFFF, false);
     }
 
     @Override
@@ -125,8 +125,9 @@ public class ClickUiScreen extends Screen {
 
     @Override
     public boolean keyPressed(KeyInput input) {
+        for (VerticalStack stack : panels) {
+            stack.keyPressed(input);
+        }
         return super.keyPressed(input);
     }
-
-
 }

@@ -18,7 +18,7 @@ public class ColorSetting extends SettingValue<Color> {
         object.addProperty("r", get().getRed());
         object.addProperty("g", get().getGreen());
         object.addProperty("b", get().getBlue());
-        object.addProperty("a", get().getAlpha());
+        object.addProperty("a", get().getAlphaInt());
 
         return object;
     }
@@ -33,6 +33,11 @@ public class ColorSetting extends SettingValue<Color> {
         int b = object.has("b") ? object.get("b").getAsInt() : 255;
         int a = object.has("a") ? object.get("a").getAsInt() : 255;
 
-        set(new Color(r, g, b, a));
+        set(new Color(
+                r / 255f,
+                g / 255f,
+                b / 255f,
+                a / 255f
+        ));
     }
 }

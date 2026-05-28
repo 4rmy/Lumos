@@ -1,5 +1,6 @@
 package dev.army.lumos.ui.widgets;
 
+import dev.army.lumos.modules.settings.*;
 import net.minecraft.client.gui.Click;
 import net.minecraft.client.input.KeyInput;
 
@@ -13,6 +14,22 @@ public abstract class ContainerComponent extends Component {
     public void add(Component component) {
         component.parent = this;
         children.add(component);
+    }
+
+    public void add(SettingValue<?> setting) {
+        if (setting instanceof BooleanSetting) {
+            children.add(new ToggleComponent((BooleanSetting) setting));
+        } else if (setting instanceof NumberSetting) {
+            children.add(new NumberComponent((NumberSetting) setting));
+        } else if (setting instanceof EnumSetting<?>) {
+            children.add(new EnumComponent<>((EnumSetting<?>) setting));
+        } else if (setting instanceof StringSetting) {
+            children.add(new StringComponent((StringSetting) setting));
+        } else if (setting instanceof KeybindSetting) {
+            children.add(new KeybindComponent((KeybindSetting) setting));
+        } else if (setting instanceof ColorSetting) {
+            children.add(new ColorComponent((ColorSetting) setting));
+        }
     }
 
     @Override

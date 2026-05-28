@@ -28,6 +28,10 @@ public abstract class ModuleBase {
         return enabled;
     }
 
+    public void setEnabled(boolean enabled) {
+        setEnabled(enabled, true);
+    }
+
     public void setEnabled(boolean enabled, boolean callEvents) {
         if (this.enabled == enabled) return;
 
@@ -39,10 +43,6 @@ public abstract class ModuleBase {
                 onDisable();
             }
         }
-    }
-
-    public void setEnabled(boolean enabled) {
-        setEnabled(enabled, true);
     }
 
     public void toggle() {

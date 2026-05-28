@@ -1,5 +1,6 @@
 package dev.army.lumos.util.types;
 
+@SuppressWarnings("unused")
 public class Color {
     private float h;
     private float s;
@@ -156,6 +157,6 @@ public class Color {
     }
 
     private float clamp(float v) {
-        return Math.max(0f, Math.min(1f, v));
+        return Math.clamp(v, 0f, 1f);
     }
 }
